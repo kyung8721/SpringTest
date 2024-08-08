@@ -19,6 +19,8 @@ public class StoreContoller {
 	@RequestMapping("/db/store/list")
 	@ResponseBody
 	public List<Store> storeList() {
+		// 가게 정보 리스트를 json으로 response담는다.
+		// 가게 정보 리스트 받아오기
 		List<Store> storeList = storeService.getStoreList();
 		
 		return storeList;

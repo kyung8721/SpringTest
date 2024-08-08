@@ -16,6 +16,8 @@ public class StoreService {
 	private StoreRepository storeRepository;
 	
 	public List<Store> getStoreList(){
+		// store 모든 행 조회 -> 이건 repository로 해야함
+		// repository에서 조회한 데이터 불러오기
 		List<Store> storeList = storeRepository.selectStoreList();
 		
 		return storeList;

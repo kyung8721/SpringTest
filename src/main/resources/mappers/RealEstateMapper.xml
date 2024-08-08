@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace = "com.kyung.spring.test.realEstate.repository.RealEstateRepository">
+ 	<select id = "selectRealEstate"
+ 	resultType = "com.kyung.spring.test.realEstate.domain.RealEstate"
+ 	parameterType="int">
+ 		SELECT
+ 			`id`
+ 			, `realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`real_estate`
+ 		WHERE
+ 			id = #{id}
+ 	</select>
+ 	
+ 	<select id = "selectRealEstateRent"
+ 	resultType="com.kyung.spring.test.realEstate.domain.RealEstate"
+ 	parameterType="int">
+ 		<![CDATA[
+	 		SELECT
+	 			`id`
+	 			, `realtorId`
+	 			, `address`
+	 			, `area`
+	 			, `type`
+	 			, `price`
+	 			, `rentPrice`
+	 			, `createdAt`
+	 			, `updatedAt`
+	 		FROM
+	 			`real_estate`
+	 		WHERE
+	 			rentPrice < #{rent}
+	 	]]>
+ 	
+ 	</select>
+ 	
+ 	<select id="selectRealEstateAP"
+ 	resultType = "com.kyung.spring.test.realEstate.domain.RealEstate"
+ 	parameterType="int">
+ 		<![CDATA[
+ 			SELECT
+	 			`id`
+	 			, `realtorId`
+	 			, `address`
+	 			, `area`
+	 			, `type`
+	 			, `price`
+	 			, `rentPrice`
+	 			, `createdAt`
+	 			, `updatedAt`
+	 		FROM
+	 			`real_estate`
+	 		WHERE
+	 			area >= #{area} AND price <= #{price}
+ 		]]>
+ 	
+ 	</select>
+ 
+ </mapper>

@@ -3,6 +3,7 @@ package com.kyung.spring.test.Store.domain;
 import java.time.LocalDateTime;
 
 public class Store {
+	//데이터베이스의 각 컬럼명과 동일하게 멤버 변수를 만들어줌
 	private int id;
 	private String name;
 	private String phoneNumber;
@@ -12,7 +13,7 @@ public class Store {
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 	
-	
+	//게터세터 필요
 	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
 	}
