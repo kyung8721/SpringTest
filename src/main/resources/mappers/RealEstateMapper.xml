@@ -26,7 +26,6 @@
  	<select id = "selectRealEstateRent"
  	resultType="com.kyung.spring.test.realEstate.domain.RealEstate"
  	parameterType="int">
- 		<![CDATA[
 	 		SELECT
 	 			`id`
 	 			, `realtorId`
@@ -40,15 +39,13 @@
 	 		FROM
 	 			`real_estate`
 	 		WHERE
-	 			rentPrice < #{rent}
-	 	]]>
+	 			<![CDATA[`rentPrice` < #{rent}]]>
  	
  	</select>
  	
  	<select id="selectRealEstateAP"
  	resultType = "com.kyung.spring.test.realEstate.domain.RealEstate"
  	parameterType="int">
- 		<![CDATA[
  			SELECT
 	 			`id`
 	 			, `realtorId`
@@ -62,9 +59,69 @@
 	 		FROM
 	 			`real_estate`
 	 		WHERE
-	 			area >= #{area} AND price <= #{price}
- 		]]>
- 	
+	 			<![CDATA[
+	 				`area` >= #{area}
+	 				AND `price` <= #{price}
+	 				AND	`type` = '매매'
+	 			]]>
  	</select>
+ 	
+ 	<insert id="insertRealEstate" parameterType="com.kyung.spring.test.realEstate.domain.RealEstate">
+ 		INSERT
+ 			`real_estate`
+		(
+			`realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+		)
+ 		VALUE
+ 		(
+ 			#{realtorId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 		)
+ 	
+ 	
+ 	</insert>
+ 	
+ 	<insert id="insertRealEstateByParameter" parameterType = "map">
+ 		INSERT
+ 			`real_estate`
+ 		(
+ 			`realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 		)
+ 		VALUE
+ 		(
+ 			#{realtorId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 			, #{rentPrice}
+ 		)
+ 	
+ 	
+ 	</insert>
+ 	
+ 	<update id="updateRealEstate" parameterType="com.kyung.spring.test.realEstate.domain.RealEstate">
+ 		UPDATE
+ 			`real_estate`
+ 		SET
+ 			`type` = #{type}
+ 			, `price` = #{price}
+ 			, `updatedAt` = now()
+ 		 WHERE
+ 		 	`id` = #{id}
+ 	
+ 	</update>
  
  </mapper>
