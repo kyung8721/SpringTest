@@ -116,4 +116,23 @@ public class RealEstateController {
 		// 전달받은 결과를 return
 		return "수정 성공 : " + count;
 	}
+	
+	// DELETE
+	@RequestMapping("/7")
+	@ResponseBody
+	public String realEstateDelete(@RequestParam("id") int id) {
+		// 객체로 delete 할 서비스에 전달
+		
+		// 객체 생성
+		RealEstate realEstate = new RealEstate();
+		
+		// 객체에 값 전달
+		realEstate.setId(id);
+		
+		// service로 객체 전달
+		int count = realEstateService.getRealEstateDelete(realEstate);
+		
+		// 전달받은 결과를 return
+		return "삭제 성공 : " + count;
+	}
 }

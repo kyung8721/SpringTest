@@ -68,4 +68,13 @@ public class RealEstateService {
 		// 전달 받은 값을 controller로 전달
 		return count;
 	}
+	
+	// 객체로 받은 값을 delete
+	public int getRealEstateDelete(RealEstate realEstate) {
+		// 쿼리 처리를 위해 객체 형태로 repository에 전달
+		int count = realEstateRepository.deleteRealEstate(realEstate);
+		
+		// 전달 받은 값을 controller로 전달
+		return count;
+	}
 }

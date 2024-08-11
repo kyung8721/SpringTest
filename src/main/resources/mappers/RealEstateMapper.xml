@@ -123,5 +123,13 @@
  		 	`id` = #{id}
  	
  	</update>
+ 	
+ 	<delete id="deleteRealEstate" parameterType = "com.kyung.spring.test.realEstate.domain.RealEstate">
+ 		DELETE
+ 			FROM `real_estate`
+ 		WHERE
+ 			`id` = #{id}
+ 	
+ 	</delete>
  
  </mapper>

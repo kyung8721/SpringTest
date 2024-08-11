@@ -30,4 +30,7 @@ public interface RealEstateRepository {
 	
 	// 전달받은 객체를 update 쿼리 실행을 위해 xml 파일로 전달
 	public int updateRealEstate(RealEstate realEstate);
+	
+	// 전달 받은 객체를 delete 쿼리 실행을 위해 xml 파일로 전달
+	public int deleteRealEstate(RealEstate realEstate);
 }
