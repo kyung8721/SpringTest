@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class Seller {
 	private int id;
 	private String nickname;
-	private float temperature;
+	private double temperature;
 	private String profileImage;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
@@ -23,10 +23,10 @@ public class Seller {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public float getTemperature() {
+	public double getTemperature() {
 		return temperature;
 	}
-	public void setTemperature(float temperature) {
+	public void setTemperature(double temperature) {
 		this.temperature = temperature;
 	}
 	public String getProfileImage() {

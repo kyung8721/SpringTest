@@ -8,9 +8,12 @@ import com.kyung.spring.test.seller.repository.SellerRepository;
 
 @Service
 public class SellerService {
+	
+	// 객체 생성
 	@Autowired
 	private SellerRepository sellerRepository;
 	
+	// 닉네임, 매너온도, 프로필 이미지 경로 전달 받고 판매자 정보 저장
 	public int sellerInsertService(Seller seller) {
 		int count = sellerRepository.insertSeller(seller);
 		

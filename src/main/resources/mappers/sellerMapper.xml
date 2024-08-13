@@ -4,7 +4,8 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.kyung.spring.test.seller.repository.SellerRepository">
- 	<insert id="insertSeller" parameterType="com.kyung.spring.test.seller.domain.Seller">
+ 	<insert id="insertSeller" parameterType="com.kyung.spring.test.seller.domain.Seller"
+ 	useGeneratedKeys="true" keyProperty="id" >
  		INSERT
  			`seller`
  		(

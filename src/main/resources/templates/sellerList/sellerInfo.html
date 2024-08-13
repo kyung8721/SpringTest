@@ -8,11 +8,12 @@
 </head>
 <body>
 	
-	<div class="container mt-3">
+	<div class="container mt-3 text-center">
+		<div th:text="${add}" class="display-3 text-danger"></div>
 		<h1>판매자 정보</h1>
-		<img width="200px" height="200px" src="${seller.profileImage}">
+		<img width="200px" height="200px" th:src="${seller.profileImage}">
 		<p class="display-4" th:text="${seller.nickname}">다팔아</p>
-		<h4 class="text-warning" th:text="${seller.temperature}">36.5</h4>
+		<h4 class="text-warning" th:text="${seller.temperature} + '°C'">36.5</h4>
 	</div>
 
 
