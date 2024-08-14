@@ -3,8 +3,8 @@ package com.kyung.spring.test.realtor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kyung.spring.test.realtor.domain.Realtor;
 import com.kyung.spring.test.realtor.service.RealtorService;
@@ -25,18 +25,22 @@ public class RealtorController {
 	
 	// 입력된 값 받아와서 DB에 추가
 	@RequestMapping("/insert")
-	public String realtorInsert(Model model
-			, @RequestParam("office") String office
-			, @RequestParam("phoneNumber") String PH
-			, @RequestParam("address") String address
-			, @RequestParam("grade") String grade) {
-		// 객체 생성
-		Realtor realtor = new Realtor();
-		// 객체에 값 집어 넣기
-		realtor.setOffice(office);
-		realtor.setPhoneNumber(PH);
-		realtor.setAddress(address);
-		realtor.setGrade(grade);
+	public String realtorInsert(Model model,
+			//, @RequestParam("office") String office
+			//, @RequestParam("phoneNumber") String PH
+			//, @RequestParam("address") String address
+			//, @RequestParam("grade") String grade
+			@ModelAttribute Realtor realtor) {
+//		// 객체 생성
+//		Realtor realtor = new Realtor();
+//		// 객체에 값 집어 넣기
+//		realtor.setOffice(office);
+//		realtor.setPhoneNumber(PH);
+//		realtor.setAddress(address);
+//		realtor.setGrade(grade);
+		
+		// 객체 생성 후 값 넣는 과정 한번에 처리
+		
 		
 		// 객체를 서비스로 전달
 		realtorService.realtorInsertService(realtor);
