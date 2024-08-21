@@ -8,6 +8,7 @@ import com.kyung.spring.test.thymeleaf.domain.Weather;
 
 @Mapper
 public interface ThymeleafRepository {
+	
 	public List<Weather> selectThymeleafResponse();
 	
 	public int InsertWeatherResponse(Weather weather);

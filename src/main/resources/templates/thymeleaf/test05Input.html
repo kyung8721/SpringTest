@@ -19,10 +19,10 @@
 				<nav>
 					<ul class="nav flex-column font-weight-bold">
 						<li class="nav-item">
-							<a class="nav-link text-light" href="#">날씨</a>
+							<a class="nav-link text-light" href="/thymeleaf/test05">날씨</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-light" href="#">날씨입력</a>
+							<a class="nav-link text-light" href="/thymeleaf/test05/input">날씨입력</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link text-light" href="#">테마날씨</a>
@@ -43,8 +43,8 @@
 					<div class="d-flex justify-content-between">
 						<!-- 날짜 입력 -->
 						<label class="d-flex align-items-center col-4">날짜
-							<input type="text" id= "date" class="ml-2 form-control col-8">
-							<input type="hidden" id="dateSelect" name="date"></input>
+							<input type="text" id= "date" name = "date" class="ml-2 form-control col-8">
+							<!-- <input type="hidden" id="dateSelect" name="date"></input> -->
 						</label>
 						
 						<label class="d-flex align-items-center col-4">날씨
@@ -132,11 +132,11 @@
 	<script>
 	 $(document).ready(function() {
 		$( "#date" ).datepicker({
-	        minDate:0,
+	        // minDate:0, -> 오늘부터 선택할 수 있게 해줌
 	        dayNamesMin:['월', '화', '수', '목', '금', '토', '일'],
-	        onSelect : function(){
+	        /* onSelect : function(){
 	        	$("#dateSelect").val($.datepicker.formatDate("yy-mm-dd",$("#date").datepicker("getDate")));
-	        },
+	        }, */
 	        dateFormat: "yy년 mm월 dd일"
 	    });
 		

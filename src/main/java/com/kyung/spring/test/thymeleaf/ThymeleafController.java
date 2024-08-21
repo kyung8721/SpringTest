@@ -1,13 +1,13 @@
 package com.kyung.spring.test.thymeleaf;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -177,8 +177,8 @@ public class ThymeleafController {
 	
 	// 입력받은 데이터 insert
 	@GetMapping("/test05/insert")
-	public String test05Insert(
-			@RequestParam("date") LocalDate date
+	public String test05Insert( //RequestParam과 받는 변수의 이름이 같으면 @RequestParam String weather 이런식으로 생략가능
+			@RequestParam("date") @DateTimeFormat(pattern="yyyy년 MM월 dd일") LocalDate date // @DateTimeFormat : 날짜 포맷을 알려줌(알려주면 알아서 날짜 변환함)
 			, @RequestParam("weather") String weather
 			, @RequestParam("temperatures") double temperatures
 			, @RequestParam("precipitation") double precipitation

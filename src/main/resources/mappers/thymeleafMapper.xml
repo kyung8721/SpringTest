@@ -40,8 +40,6 @@
  			, #{microDust}
  			, #{windSpeed}
  		)
- 		
- 	
  	</insert>
  
  </mapper>
