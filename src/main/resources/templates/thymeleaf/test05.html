@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>날씨</title>
+<!-- bootstrap CDN link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/weatherStyle.css">
+</head>
+<body>
+	<div id="wrap" class="ml-5">
+		<div class="d-flex">
+			<div class="menu bg-primary">
+				<div class="logo d-flex justify-content-center align-items-center">
+					<img class="logoImg" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F4i0Ln%2FbtsppIIYCMz%2F8TMI2cKGpTmGjRgKmzS3p1%2Fimg.png">
+				</div>
+				<nav>
+					<ul class="nav flex-column font-weight-bold">
+						<li class="nav-item">
+							<a class="nav-link text-light" href="#">날씨</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" href="#">날씨입력</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" href="#">테마날씨</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" href="#">관측 기후</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			
+			<div class="contents pl-4 pt-3">
+				<h4>과거 날씨</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>날짜</th>
+							<th>날씨</th>
+							<th>기온</th>
+							<th>강수량</th>
+							<th>미세먼지</th>
+							<th>풍속</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="weather:${weatherData}">
+							<td th:text="${#temporals.format(weather.date, 'yyyy년 M월 d일')}">0000년 0월 0일</td>
+							<td th:switch="${weather.weather}">
+								<img th:case="맑음" src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"></img>
+								<img th:case="구름조금" src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg"></img>
+								<img th:case="흐림" src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg"></img>
+								<img th:case="비" src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></img>
+								<span th:case="*" th:text="${weather.weather}"></span>
+							</td>
+							<td th:text="|${weather.temperatures}°C|">32.4도</td>
+							<td th:text="|${weather.precipitation}mm|">33mm</td>
+							<td th:text="${weather.microDust}">미세먼지1</td>
+							<td th:text="|${weather.windSpeed}km/h|">28km/h</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<footer class="d-flex">
+			<div class="footerlogo d-flex justify-content-center align-items-center">
+				<img class="logoImg" src="https://aphrosys.com/img/partners_white/kma.png">
+			</div>
+			<div class="pl-4 pt-2 text-secondary">
+				(07062) 서울시 동작구 여의대방로16길 61<br>
+				Copyright@2020 KMA. All Rights RESERVED.
+			</div>
+		</footer>
+	</div>
+	
+	
+	
+	
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</body>
+</html>

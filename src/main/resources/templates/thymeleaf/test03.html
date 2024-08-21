@@ -22,13 +22,15 @@
 					<tr th:each="member:${membership}">
 						<td th:text="${member.name}">이름</td>
 						<td th:text="${member.phoneNumber}">01012345678</td>
-						<th:block th:switch="${member.grade}">
-							<td class="text-danger" th:case="VIP">VIP</td>
-							<td class="text-warning" th:case="GOLD">GOLD</td>
-							<td th:case="BASIC">BASIC</td>
-						</th:block>
-						<td th:if="${member.point} >= 5000" th:text="|${member.point}p|" class="text-primary">12345p</td>
-						<td th:unless="${member.point} >= 5000" th:text="|${member.point}p|">12345p</td>
+						<td th:switch="${member.grade}">
+							<span class="text-danger" th:case="VIP">VIP</span>
+							<span class="text-warning" th:case="GOLD">GOLD</span>
+							<span th:case="BASIC">BASIC</span>
+						</td>
+						<td>
+							<span th:if="${member.point} >= 5000" th:text="|${member.point}P|" class="text-primary">12345p</span>
+							<span th:unless="${member.point} >= 5000" th:text="|${member.point}P|">12345p</span>
+						</td>
 					</tr>
 			</tbody>
 		</table>

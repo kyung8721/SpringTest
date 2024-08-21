@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+#wrap{
+	width : 1200px;
+}
+
+.menu{
+	width: 200px;
+}
+
+.menuInput{
+	width: 200px;
+	height : 300px;
+}
+
+.contents{
+	width : 1000px;
+}
+
+.contentsInput{
+	width : 1000px;
+	height : 300px;
+}
+
+.logo{
+	width : 200px;
+	height : 70px;
+}
+
+.footerlogo{
+	width : 200px;
+	height : 100px;
+}
+
+.logoImg{
+	width : 150px;
+}
