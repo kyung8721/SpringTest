@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>통나무 팬션 예약하기</title>
+<!-- bootstrap CDN link -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/pension/style.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+	<div class="d-flex justify-content-center">
+		<div class="" id="wrap">
+			<header class="d-flex justify-content-center align-items-center">
+				<a href="/ajax/pension/home" class="link-underline link-underline-opacity-0 text-dark"><h1>통나무 팬션</h1></a>
+			</header>
+			
+			<div class="d-flex" id="menu">
+				<ul class="nav text-center d-flex align-items-center">
+					<li class="menuList nav-item ">
+						<a class="nav-link text-light" href="#">팬션소개</a>
+					</li>
+					<li class="menuList nav-item ">
+						<a class="nav-link text-light" href="#">객실보기</a>
+					</li>
+					<li class="menuList nav-item">
+						<a class="nav-link text-light" href="/ajax/pension/book">예약하기</a>
+					</li>
+					<li class="menuList nav-item">
+						<a class="nav-link text-light" href="/ajax/pension/list">예약목록</a>
+					</li>
+				</ul>
+			</div>
+			
+			<main class="d-flex justify-content-center" id = "mainContents">
+				<div class="col-8">
+					<h2 class="pt-3 pb-3 text-center">예약 하기</h2>
+					
+					<label class="mt-2">이름</label>
+					<input type="text" class="form-control" id="nameInput">
+					
+					<label class="mt-2">예약날짜</label>
+					<input type="text" class="form-control" id="datepicker">
+					
+					<label class="mt-2">숙박일수</label>
+					<input type="number" class="form-control" id="dayInput">
+					
+					<label class="mt-2">숙박인원</label>
+					<input type="number" class="form-control" id="headcountInput">
+					
+					<label class="mt-2">전화번호</label>
+					<input type="text" class="form-control" id="PHInput">
+					
+					<button type = "button" class="btn btn-warning mt-2 btn-block" id="bookingBtn">예약하기</button>
+				</div>
+			</main>
+			
+			<footer class="mt-5">
+				<div class="text-secondary">
+					제주특별자치도 제주시 애월읍<br>
+					사업자 등록번호 : 111-22-255222 / 농어촌민박사업자지정 / 대표:김동욱<br>
+					Copyright 2025 tongnamu All right reserved
+				</div>
+			</footer>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	<script
+	  src="https://code.jquery.com/jquery-3.7.1.min.js"
+	  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+	  crossorigin="anonymous">
+	</script>
+	
+	
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    	$(document).ready(function(){
+    		
+    		$( "#datepicker" ).datepicker({
+    	        minDate:0,
+    	        dayNamesMin:['월', '화', '수', '목', '금', '토', '일'],
+    	        dateFormat: "yy년 m월 d일"
+    	    });// 데이트피커 이벤트 끝
+    	    
+    	    $("#bookingBtn").on("click", function(){
+    	    	let name = $("#nameInput").val();
+    	    	let date = $("#datepicker").val();
+    	    	let day = $("#dayInput").val();
+    	    	let headcount = $("#headcountInput").val();
+    	    	let phoneNumber = $("#PHInput").val();
+    	    	
+    	    	if(name == ""){
+    	    		alert("이름을 입력해주세요");
+    	    	}
+    	    	
+    	    	if(date == ""){
+    	    		alert("날짜를 입력해주세요");
+    	    	}
+    	    	
+    	    	if(day == ""){
+    	    		alert("숙박일수를 입력해주세요");
+    	    	}
+    	    	
+    	    	if(headcount == ""){
+    	    		alert("숙박인원을 입력해주세요");
+    	    	}
+    	    	
+    	    	if(phoneNumber == ""){
+    	    		alert("전화번호를 입력해주세요");
+    	    	}
+    	    	
+    	    	$.ajax({
+    	    		type : "get"
+    	    		, url : "/ajax/pension/insert"
+    	    		, data : {"name" : name, "date" : date, "day" : day, "headcount" : headcount, "phoneNumber" : phoneNumber, "state" : "대기중"}
+    	    		, success : function(data){
+    	    			if(data.result == "success"){
+    	    				alert("예약되었습니다");
+    	    			} else{
+    	    				alert("예약 실패!");
+    	    			}
+    	    			
+    	    		} // success 끝
+    	    		, error : function(){
+    	    			alert("데이터 전달 실패");
+    	    		} // error 끝
+    	    	}) // 예약버튼 ajax 끝 
+    	    }); // 예약버튼 이벤트 끝
+    	});// 문서 준비 끝
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+#wrap{
+	width : 1200px;
+	
+}
+
+header{
+	width : 1200px;
+	height : 100px;
+}
+
+#menu{
+	width : 1200px;
+	height : 40px;
+	background-color : #cd843f;
+}
+
+.menuList{
+	width : 300px;
+}
+
+
+#mainContents{
+	width : 1200px;
+	height : 900px;
+}
+
+#mainBanner{
+	width : 1200px;
+	height : 600px;
+}
+
+#imgBanner{
+	width : 1200px;
+	height : 600px;
+}
+
+#subBanner{
+	width : 1200px;
+	height : 300px;
+}
+
+.nonClickBanner{
+	background-color : #a1522c;
+}
+
+.bookingBanner{
+	background-color : #d16a1e;
+}
+
+footer{
+	width : 1200px;
+	height : 100px;
+}

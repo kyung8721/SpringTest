@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace = "com.kyung.spring.test.ajax.repository.UrlRepository">
+ 	<select id = "urlInfoRepository" resultType = "com.kyung.spring.test.ajax.domain.Url">
+	 	SELECT
+	 		`id`
+	 		, `name`
+	 		, `url`
+	 		, `createdAt`
+	 		, `updatedAt`
+	 	FROM
+	 		`url`
+ 	</select>
+ 	
+ 	<insert id="urlInsertRepository" parameterType="com.kyung.spring.test.ajax.domain.Url">
+ 		INSERT INTO
+ 			`url`
+ 		(
+ 			`name`
+ 			, `url`
+ 		)
+ 		VALUE
+ 		(
+ 			#{name}
+ 			, #{url}
+ 		)
+ 	
+ 	</insert>
+ 	
+ 	<select id="urlDuplicateRepository" parameterType="string" resultType = "int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`url`
+ 		WHERE
+ 			`url` = #{url}
+ 	</select>
+ 
+	<delete id="urlDeleteRepository" parameterType="int">
+		DELETE
+		FROM
+			`url`
+		WHERE
+			`id` = #{id}
+
+	</delete>
+ 
+ </mapper>

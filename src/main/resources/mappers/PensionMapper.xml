@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace = "com.kyung.spring.test.pension.repository.PensionRepository">
+ 	<select id="pensionListRepository" resultType = "com.kyung.spring.test.pension.domain.Booking">
+ 		SELECT
+ 			`id`
+ 			, `name`
+ 			, `headcount`
+ 			, `day`
+ 			, `date`
+ 			, `phoneNumber`
+ 			, `state`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`booking`
+ 	
+ 	</select>
+ 	
+ 	<delete id="bookingDeleteRepository" parameterType = "int">
+ 		DELETE
+		FROM
+			`booking`
+		WHERE
+			`id` = #{id}
+ 	</delete>
+ 	
+ 	<insert id="bookingInsertRepository" parameterType = "com.kyung.spring.test.pension.domain.Booking">
+ 		INSERT INTO
+ 			`booking`
+ 		(
+ 			`name`
+ 			, `headcount`
+ 			, `day`
+ 			, `date`
+ 			, `phoneNumber`
+ 			, `state`
+ 		)
+ 		VALUE
+ 		(
+ 			#{name}
+ 			, #{headcount}
+ 			, #{day}
+ 			, #{date}
+ 			, #{phoneNumber}
+ 			, #{state}
+ 		)
+ 	</insert>
+ 	
+ 	<select id="bookingCheckRepository" parameterType="string" resultType="com.kyung.spring.test.pension.domain.Booking">
+ 		SELECT
+ 			`id`
+ 			, `name`
+ 			, `headcount`
+ 			, `day`
+ 			, `date`
+ 			, `phoneNumber`
+ 			, `state`
+ 		FROM
+ 			`booking`
+ 		WHERE
+ 			`name` = #{name}
+ 			AND `phoneNumber` = #{phoneNumber}
+ 	</select>
+ </mapper>
