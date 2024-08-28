@@ -56,6 +56,7 @@
 								<span th:case="대기중" class="text-primary">대기중</span>
 								<span th:case="확정" class="text-success">확정</span>
 								<span th:case="취소" class="text-danger">취소</span>
+								<span th:case="*" th:text = "${book.state}" class="text-secondary">그외</span>
 							</td>
 							<td><button type="button" class="btn btn-danger deleteBtn" th:data-delete-btn="${book.id}">삭제</button></td>
 						</tr>

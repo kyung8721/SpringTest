@@ -76,7 +76,7 @@ public class PensionController {
 		// {"result" : "false"}
 		Map<String, String> resultMap = new HashMap<>();
 		
-		if(count >= 1) {
+		if(count == 1) {
 			// 삭제 성공
 			resultMap.put("result", "success");
 		}else{
