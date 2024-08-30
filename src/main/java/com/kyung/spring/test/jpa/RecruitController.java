@@ -82,7 +82,7 @@ public class RecruitController {
 		
 		String type = "계약직";
 		
-		recruitList = recruitRepository.findByTypeOrderBySalaryDesc(type);
+		recruitList = recruitRepository.findTop3ByTypeOrderBySalaryDesc(type);
 		
 		return recruitList;
 	}
@@ -108,7 +108,7 @@ public class RecruitController {
 	public List<Recruit> recruitNativeQuery(){
 		List<Recruit> recruitList = new ArrayList<>();
 		
-		String deadline = "2026-04-10";
+		String deadline = "2026-04-10 00:00:00"; // 10일부터 포함할거라면.
 		int salary = 8100;
 		String type = "정규직";
 		recruitList = recruitRepository.selectByJob(deadline, salary, type);
